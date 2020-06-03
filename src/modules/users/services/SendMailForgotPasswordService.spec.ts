@@ -21,6 +21,7 @@ describe('SendMailForgotPassword', () => {
       fakeMailProvider,
     );
   });
+
   it('should be able to recover the password using email', async () => {
     const sendMail = jest.spyOn(fakeMailProvider, 'sendMail');
 
@@ -37,7 +38,7 @@ describe('SendMailForgotPassword', () => {
     expect(sendMail).toHaveBeenCalled();
   });
 
-  it('should not be able to recover a non-existin user password', async () => {
+  it('should not be able to recover a non-existing user password', async () => {
     await expect(
       sendMailForgotPasswordService.execute({
         email: 'gabriel@gabrieosl.com',
