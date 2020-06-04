@@ -1,5 +1,4 @@
 import { Router } from 'express';
-import { container } from 'tsyringe';
 import multer from 'multer';
 
 import ensureAuthenticated from '@modules/users/infra/http/middlewares/ensureAuthentication';
