@@ -1,5 +1,5 @@
 import { Router } from 'express';
-import { container } from 'tsyringe';
+import { celebrate, Segments, Joi } from 'celebrate';
 
 import UsersRepository from '@modules/users/infra/typeorm/repositories/UsersRepository';
 import SessionsController from '../controllers/SessionsController';
@@ -7,6 +7,15 @@ import SessionsController from '../controllers/SessionsController';
 const sessionsRouter = Router();
 const sessionsControllers = new SessionsController();
 
-sessionsRouter.post('/', sessionsControllers.create);
+sessionsRouter.post(
+  '/',
+  celebrate({
+    [Segments.BODY]: {
+      email: Joi.string().email().required(),
+      password: Joi.string().required(),
+    },
+  }),
+  sessionsControllers.create,
+);
 
 export default sessionsRouter;
