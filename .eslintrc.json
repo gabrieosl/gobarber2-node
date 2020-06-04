@@ -25,6 +25,7 @@
     "linebreak-style": ["error", "unix"],
     "quotes": ["error", "single"],
     "semi": "off",
+    "prefer-destructuring": "error",
     "@typescript-eslint/semi": ["error"],
     "import/extensions": "off",
     "@typescript-eslint/no-unused-vars": "off",
