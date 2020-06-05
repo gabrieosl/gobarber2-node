@@ -2,14 +2,21 @@ import AppError from '@shared/errors/AppError';
 
 import FakeUsersRepository from '@modules/users/repositories/fakes/FakeUsersRepository';
 import ListProvidersService from './ListProvidersService';
+import ICacheProvider from '@shared/container/providers/CacheProvider/models/ICacheProvider';
+import FakeCacheProvider from '@shared/container/providers/CacheProvider/fakes/FakeCacheProvider';
 
 let fakeUsersRepository: FakeUsersRepository;
+let cacheProvider: ICacheProvider;
 let listProviders: ListProvidersService;
 
 describe('ShowProfile', () => {
   beforeEach(() => {
     fakeUsersRepository = new FakeUsersRepository();
-    listProviders = new ListProvidersService(fakeUsersRepository);
+    cacheProvider = new FakeCacheProvider();
+    listProviders = new ListProvidersService(
+      fakeUsersRepository,
+      cacheProvider,
+    );
   });
 
   it('should be able to list providers', async () => {
