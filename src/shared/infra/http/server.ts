@@ -1,4 +1,5 @@
 import 'reflect-metadata';
+import 'dotenv/config';
 
 import express, { Request, Response, NextFunction } from 'express';
 import { errors } from 'celebrate';
@@ -14,7 +15,7 @@ import '@shared/container';
 const app = express();
 
 app.use(express.json());
-app.use(express.static(uploadConfig.uploadsFolder));
+app.use('/files', express.static(uploadConfig.uploadsFolder));
 app.use(routes);
 
 app.use(errors());
